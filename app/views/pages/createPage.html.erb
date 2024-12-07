@@ -1,0 +1,136 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f8f8f8;
+        }
+        .container {
+            width: 80%;
+            max-width: 600px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            text-align: center;
+        }
+        .content {
+            padding: 20px;
+        }
+        .scheme{
+            width: 100%;
+            max-width: 500px;
+            margin: auto;
+            padding: 15px; 
+        }
+        .item_textbox {
+            width: 100%;
+            max-width: 400px;
+            padding: 10px;
+            font-size: 14px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            margin: 10px;
+            text-align:center;
+        }
+        .scheme_textbox {
+            width: 100%; 
+            max-width: 100%;
+            font-size: 18px;
+            padding: 15px; 
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            text-align:center;
+        }
+        .scheme_textbox::placeholder, .item_textbox::placeholder{
+            text-align:center;
+        }
+        .button-container {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        .add-button, .delete-button {
+            padding: 10px 20px;
+            font-size: 14px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .add-button {
+            background-color: #6a1b9a;
+            color: white;
+        }
+        .delete-button {
+            background-color: #d32f2f;
+            color: white;
+        }
+        .add-button:hover {
+            background-color: #5e1786;
+        }
+        delete-button:hover {
+            background-color: #b71c1c;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="content">
+            <div class="scheme">
+                <input type="text", class="scheme_textbox" placeholder="アンケート名を入力してください">
+            </div>
+            <div id="items-container">
+                <div class="item">
+                    <input type="text" class="item_textbox" placeholder="1. 項目名を入力してください">
+                </div>
+                <div class="item">
+                    <input type="text" class="item_textbox" placeholder="2. 項目名を入力してください">
+                </div>
+            </div>
+            <div class="button-container">
+                <button class="add-button" onclick="addItem()">項目を追加</button>
+                <button class="delete-button" onclick="deleteItem()">項目を削除</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let itemCount = 2; // 初期項目数
+
+        function addItem() {
+            itemCount++; // 項目数を増やす
+
+            // 新しい項目のHTMLを作成
+            const newItem = document.createElement('div');
+            newItem.classList.add('item');
+            newItem.innerHTML = `<input type="text" class="item_textbox" placeholder="${itemCount}. 項目名を入力してください">`;
+
+            // 作成した項目をコンテナに追加
+            document.getElementById('items-container').appendChild(newItem);
+        }
+
+        function deleteItem() {
+            if (itemCount > 0) { // 項目が存在する場合のみ削除
+                const itemsContainer = document.getElementById('items-container');
+                const lastItem = itemsContainer.lastElementChild; // 最後の項目を取得
+                if (lastItem) {
+                    itemsContainer.removeChild(lastItem); // 最後の項目を削除
+                    itemCount--; // 項目数を減らす
+                }
+            } else {
+                alert("これ以上削除できません。"); // 項目が0の場合の警告
+            }
+        }
+    </script>
+</body>
+</html>
