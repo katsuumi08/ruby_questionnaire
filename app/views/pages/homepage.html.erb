@@ -4,3 +4,30 @@
     <p class="lead mb-4">アンケートを追加したらここに出てくる</p>
   </div>
 </div>
+
+<div class="container">
+  <% if @surveys.any? %>
+    <% @surveys.each do |survey| %>
+      <div class="card mb-4">
+        <div class="card-header">
+          <h3><%= survey.title %></h3>
+        </div>
+        <div class="card-body">
+          <% if survey.items.any? %>
+            <ul class="list-group">
+              <% survey.items.each do |item| %>
+                <li class="list-group-item">
+                  <strong>項目名:</strong> <%= item.item_name %>
+                </li>
+              <% end %>
+            </ul>
+          <% else %>
+            <p>このアンケートには項目がありません。</p>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  <% else %>
+    <p>まだアンケートがありません。</p>
+  <% end %>
+</div>
