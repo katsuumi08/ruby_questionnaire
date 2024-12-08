@@ -10,4 +10,8 @@ Rails.application.routes.draw do
   root "pages#homepage"
   
   get 'pages/createPage'
+
+  get 'pages/new', to: 'pages#new', as: :new_survey
+  post 'pages', to: 'pages#create', as: :surveys
+  get 'pages/:id', to: 'pages#show', as: :survey
 end
