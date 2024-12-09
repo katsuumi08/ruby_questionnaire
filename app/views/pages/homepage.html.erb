@@ -1,33 +1,33 @@
-<div class="px-4 py-5 my-5 text-center">
-  <h1 class="display-5 fw-bold">ホーム画面</h1>
-  <div class="col-lg-6 mx-auto">
-    <p class="lead mb-4">アンケートを追加したらここに出てくる</p>
-  </div>
-</div>
+<head>
+  <style>
+    .card {
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      background-color: #f9f9f9;
+      width: 100%;
+      padding: 0;
+      aspect-ratio: 1; 
+      transition: transform 0.2s ease-in-out;
+    }
+    
+    .card:hover {
+      transform: scale(1.05); 
+      border-color: #4CAF50; 
+    }
+  </style>
+</head>
 
-<div class="container">
-  <% if @surveys.any? %>
+<div class="container py-5">
+  <h1 class="text-center mb-4">アンケート一覧</h1>
+  <div class="row row-cols-lg-5 g-4">
     <% @surveys.each do |survey| %>
-      <div class="card mb-4">
-        <div class="card-header">
-          <h3><%= survey.title %></h3>
-        </div>
-        <div class="card-body">
-          <% if survey.items.any? %>
-            <ul class="list-group">
-              <% survey.items.each do |item| %>
-                <li class="list-group-item">
-                  <strong>項目名:</strong> <%= item.item_name %>
-                </li>
-              <% end %>
-            </ul>
-          <% else %>
-            <p>このアンケートには項目がありません。</p>
-          <% end %>
+      <div class="col">
+        <div class="card h-100 text-center" style="cursor: pointer;" onclick="location.href='<%= survey_path(survey) %>';">
+          <div class="card-body d-flex justify-content-center align-items-center">
+            <h5 class="card-title"><%= survey.title %></h5>
+          </div>
         </div>
       </div>
     <% end %>
-  <% else %>
-    <p>まだアンケートがありません。</p>
-  <% end %>
+  </div>
 </div>
