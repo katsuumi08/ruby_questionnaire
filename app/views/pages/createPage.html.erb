@@ -11,11 +11,7 @@
         <%= form_with model: @survey || Survey.new, local: true,  html: { style: "width: 100%; max-width: 600px;" } do |form| %>
             <div class="card shadow p-4" style="width: 100%;">
                 <div class="mb-3">
-                    
                     <%= form.text_field :title, class: "form-control text-center my-3 mx-auto fs-5", style: "height: 50px; width: 90%", placeholder: "アンケート名を入力してください" %>
-
-                    <!-- input type="text" class="form-control text-center my-3 mx-auto fs-5" id="survey-name" style="height: 50px; width:90%" placeholder="アンケート名を入力してください" -->
-                    
                 </div>
                 <div id="items-container">
                     <% 3.times do |i| %>
@@ -25,19 +21,6 @@
                             <% end %>
                         </div>
                     <% end %>
-                        
-                    <!--
-                    <div class="mb-3">
-                        <input type="text" class="form-control text-center mx-auto" style="width: 80%" placeholder="1. 項目名を入力してください">
-                    </div>
-                    <div class="mb-3">
-                        <input type="text" class="form-control text-center mx-auto" style="width: 80%" placeholder="2. 項目名を入力してください">
-                    </div>
-                    <div class="mb-3">
-                        <input type="text" class="form-control text-center mx-auto" style="width: 80%" placeholder="3. 項目名を入力してください">
-                    </div>
-                    -->
-
                 </div>
                 <!--
                 <div class="d-flex justify-content-center gap-3 my-2">
@@ -45,10 +28,10 @@
                     <button class="btn btn-danger" id="delete-item-btn">項目を削除</button>
                 </div>
                 -->
-            </div>
-            <div class="d-flex justify-content-center mt-3">
-                <!-- button class="btn btn-success" id="create-btn">作成</-button -->
-                <%= form.submit "作成", class: "btn btn-success", id: "create-btn" %>
+            
+                <div class="d-flex justify-content-center mt-3">
+                    <%= form.submit "作成", class: "btn btn-success", id: "create-btn" %>
+                </div>
             </div>
         <% end %>
     </div>

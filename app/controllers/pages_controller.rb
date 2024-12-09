@@ -23,6 +23,12 @@ class PagesController < ApplicationController
     @items = @survey.items
   end
 
+  def vote
+    item = Item.find(params[:item_id]) 
+    item.increment!(:votes)          
+    redirect_to root_path, notice: "投票が完了しました！"
+  end
+
   private
 
   def survey_params
