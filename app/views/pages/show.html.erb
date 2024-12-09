@@ -1,10 +1,19 @@
-<div class="container py-5">
-  <h1 class="text-center mb-4"><%= @survey.title %></h1>
-  <div class="list-group">
-    <% @items.each do |item| %>
-      <a href="#" class="list-group-item list-group-item-action">
-        <%= item.item_name %>
-      </a>
-    <% end %>
-  </div>
-</div>
+<body class="bg-light">
+    <div class="container d-flex flex-column align-items-center justify-content-center vh-100">
+        <h1 class="text-center mb-4 fw-bolder fs-1"><%= @survey.title %></h1>
+        <div class="card shadow p-4" style="width: 50%;">
+            <h4 class="fw-bolder" style="width: 90%">1つ選んでください</h4>
+            <%= form_with url: vote_path, method: :post, local: true do %>
+                <% @items.each do |item| %>
+                    <div class="form-check d-flex align-items-center mx-auto py-3" style="width: 90%">
+                        <%= radio_button_tag :item_id, item.id, false, class: "form-check-input me-3", id: "item_#{item.id}" %>
+                        <%= label_tag "item_#{item.id}", item.item_name, class: "form-check-label fs-4 mb-0" %>
+                    </div>
+                <% end %>
+                <div class="text-center mt-4">
+                    <%= submit_tag "送信", class: "btn btn-primary btn-lg" %>
+                </div>
+            <% end %>
+        </div>    
+    </div>
+</body>

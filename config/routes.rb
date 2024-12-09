@@ -14,4 +14,5 @@ Rails.application.routes.draw do
   get 'pages/new', to: 'pages#new', as: :new_survey
   post 'pages', to: 'pages#create', as: :surveys
   get 'pages/:id', to: 'pages#show', as: :survey
+  post 'pages/vote', to: 'pages#vote', as: :vote
 end
