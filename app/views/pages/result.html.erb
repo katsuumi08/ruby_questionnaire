@@ -1,23 +1,34 @@
-<div class="container d-flex flex-column justify-content-center vh-100">
-  <h1 class="text-center mb-5 fw-bold"><%= @survey.title %></h1>
+<head>
+  <style>
+    .body{
+      background-color:  #FFF0EB;
+    }
 
-  <div class="row justify-content-center">
-    <div class="col-md-6">
-      <canvas id="resultChart" style="width: 400px; height: 400px;"></canvas>
-    </div>
-    <div class="col-md-4 d-flex flex-column justify-content-center">
-      <ul class="list-unstyled">
-        <!-- <%= chart_colors = ['#FF6384', '#36A2EB', '#4CAF50', '#FFCE56', '#9966FF'] %> -->
-        <% @items.each_with_index do |item, index| %>
-          <li class="my-2 mx-5 d-flex align-items-center fs-4">
-            <div class="color-box me-2" style="width: 20px; height: 20px; background-color: <%= chart_colors[index % chart_colors.size] %>;"></div>
-            <span><%= item.item_name %>: <%= item.votes %>票</span>
-          </li>
-        <% end %>
-      </ul>
+  </style>
+</head>
+
+<body class="body">
+  <div class="container d-flex flex-column justify-content-center vh-100">
+    <h1 class="text-center mb-5 fw-bold"><%= @survey.title %></h1>
+
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <canvas id="resultChart" style="width: 400px; height: 400px;"></canvas>
+      </div>
+      <div class="col-md-4 d-flex flex-column justify-content-center">
+        <ul class="list-unstyled">
+          <!-- <%= chart_colors = ['#FF6384', '#36A2EB', '#4CAF50', '#FFCE56', '#9966FF'] %> -->
+          <% @items.each_with_index do |item, index| %>
+            <li class="my-2 mx-5 d-flex align-items-center fs-4">
+              <div class="color-box me-2" style="width: 20px; height: 20px; background-color: <%= chart_colors[index % chart_colors.size] %>;"></div>
+              <span><%= item.item_name %>: <%= item.votes %>票</span>
+            </li>
+          <% end %>
+        </ul>
+      </div>
     </div>
   </div>
-</div>
+</body>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
