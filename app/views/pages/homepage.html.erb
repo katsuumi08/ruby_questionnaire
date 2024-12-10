@@ -1,11 +1,16 @@
 <head>
   <style>
+    .body{
+      background-color: #F4F1DE;
+    }
+
     .card {
       border: 1px solid #ccc;
       border-radius: 10px;
-      background-color: #f9f9f9;
-      width: 100%;
+      background-color: #FFFFFF;
+      width: 200px;
       padding: 0;
+      padding-top: 10px;
       aspect-ratio: 1; 
       transition: transform 0.2s ease-in-out;
     }
@@ -17,16 +22,18 @@
   </style>
 </head>
 
-<div class="container py-5">
-  <div class="row row-cols-lg-5 g-4">
-    <% @surveys.each do |survey| %>
-      <div class="col">
-        <div class="card h-100 text-center" style="cursor: pointer;" onclick="location.href='<%= survey_path(survey) %>';">
-          <div class="card-body d-flex justify-content-center align-items-center">
-            <h5 class="card-title"><%= survey.title %></h5>
+<body class="body">
+  <div class="container py-5">
+    <div class="row row-cols-lg-5 g-4">
+      <% @surveys.each do |survey| %>
+        <div class="col my-4">
+          <div class="card h-100 text-center" style="cursor: pointer;" onclick="location.href='<%= survey_path(survey) %>';">
+            <div class="card-body d-flex justify-content-center align-items-center">
+              <h5 class="card-title" style="color:"><%= survey.title %></h5>
+            </div>
           </div>
         </div>
-      </div>
-    <% end %>
+      <% end %>
+    </div>
   </div>
-</div>
+</body>
