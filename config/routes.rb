@@ -8,6 +8,9 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   root "pages#homepage"
+
+  get 'pages/result_homepage', to: 'pages#result_homepage', as: :result_homepage 
+  get 'pages/:id/result', to: 'pages#result', as: :result
   
   get 'pages/createPage'
 
