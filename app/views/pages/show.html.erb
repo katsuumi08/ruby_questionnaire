@@ -10,8 +10,8 @@
 
 <body class="body">
     <div class="container d-flex flex-column align-items-center justify-content-center vh-100">
-        <h1 class="text-center mb-4 fw-bolder fs-1"><%= @survey.title %></h1>
-        <div class="card shadow p-4" style="width: 50%;">
+        <div class="card shadow px-5 pb-4" style="width: 65%;">
+            <h1 class="text-center my-5 fw-bolder fs-1"><%= @survey.title %></h1>
             <h4 class="fw-bolder" style="width: 90%">1つ選んでください</h4>
             <%= form_with url: vote_path, method: :post, local: true do %>
                 <% @items.each do |item| %>
