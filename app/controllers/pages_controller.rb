@@ -10,7 +10,7 @@ class PagesController < ApplicationController
 
   def new
     @survey=Survey.new
-    3.times {@survey.items.build}
+    4.times {@survey.items.build}
   end
 
   def create
@@ -42,8 +42,8 @@ class PagesController < ApplicationController
   private
 
   def survey_params
-    params.require(:survey).permit(:title, items_attributes: [:item_name])
+    params.require(:survey).permit(:title, items_attributes: [:item_name])  
   end
-
   
+
 end
