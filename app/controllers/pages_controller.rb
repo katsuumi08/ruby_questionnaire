@@ -13,6 +13,13 @@ class PagesController < ApplicationController
     4.times {@survey.items.build}
   end
 
+  def createPage
+    @survey=Survey.new
+    @count = params["item_count"].to_i
+    @count = 4 if @count.zero?
+    @count.times {@survey.items.build}
+  end
+
   def create
     @survey = Survey.new(survey_params)
     if @survey.save
